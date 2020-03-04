@@ -141,6 +141,7 @@
     <None Include="dani" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
