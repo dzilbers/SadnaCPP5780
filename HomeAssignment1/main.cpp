@@ -20,10 +20,11 @@ using namespace std;
 // Add your menu options according the the exercise requirements
 enum MenuOption {
 	EXIT_MENU,
-	CREATE_BUS_50_SITS,
-	CREATE_BUS_N_SITS,
+	CREATE_BUS_50_SITS, // Default, without line
+	CREATE_BUS_N_SITS, // Full, with line
 	ASSIGN_LINE_TO_BUS,
 	// ...
+	ADD_BUS,
 	REMOVE_BUS,
 	// ...
 	SHOW_BUS,
@@ -39,8 +40,8 @@ enum MenuOption {
 // above.
 const char * const menuOptionStrings[] = {
 	"exit the program",
-	"create a bus without line",
-	"create a bus with line",
+	"create a bus with 50 seats",
+	"create a bus with N seats",
 	"assign line to a bus",
 	//...
 	"add a bus to the fleet",
