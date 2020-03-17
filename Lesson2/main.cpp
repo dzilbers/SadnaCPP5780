@@ -1,30 +1,21 @@
 #include <cstring>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
+const char* str = "asdasd";
+void increase(void*, int);
 double cube(int);
 double refcube(int&);
-int main() {
+int main1() {
+	str = "blabla";
+	//*str = 'h';
+	int i = -50;
+	unsigned int& u = (unsigned int&)i;
+	cout << i << " " << u << endl;
+	cout << hex << i << " " << hex << u;
 	double x = 2.0;
 	//cout << refcube(x + 3.0);
-	return 0;
-}
-
-struct Student;
-Student createStudent1(int, const char[], const char[]);
-Student& createStudent2(int, const char[], const char[]);
-Student& createStudent2(int, const char[], const char[]);
-const Student& createStudent3(int id, const char[], const char[]);
-Student& createStudent4(int id, const char fname[], const char[]);
-int main2() {
-	Student elisheva;
-	elisheva = createStudent1(345, "Elisheva", "Maimon");
-	Student st1 = createStudent2(678, "Yossi", "Cohen") = elisheva;
-	Student st2 = createStudent3(123, "Amnon", "Levi");
-	Student* st4 = &createStudent4(234, "Bibi", "Netaniahu");
-	delete st4;
-	Student& st5 = createStudent4(456, "Donald", "Trump");
-	delete& st5;
 	return 0;
 }
 
@@ -91,6 +82,19 @@ Student& createStudent4(int id, const char fname[], const char lname[]) {
 	return *temp;
 }
 
+int main() {
+	Student elisheva;
+	elisheva = createStudent1(345, "Elisheva", "Maimon");
+	Student st1 = createStudent2(678, "Yossi", "Cohen") = elisheva;
+	Student st2 = createStudent3(123, "Amnon", "Levi");
+	Student* st4 = &createStudent4(234, "Bibi", "Netaniahu");
+	delete st4;
+	Student& st5 = createStudent4(456, "Donald", "Trump");
+	delete &st5;
+	memcpy(&st2, &st1, sizeof(Student));
+	return 0;
+}
+
 double cube(int a) {
 	a *= a * a;
 	return a;
@@ -102,7 +106,7 @@ double refcube(int& a) {
 
 void increase(void* data, int type) {
 	switch (type) {
-		case sizeof(char): (*((char*)data))++; break;
+		case sizeof(char): (*static_cast<char*>(data))++; break;
 		case sizeof(short): (*((short*)data))++; break;
 		case sizeof(long): (*((long*)data))++; break;
 	}
