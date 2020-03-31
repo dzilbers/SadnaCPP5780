@@ -82,6 +82,18 @@ Student& createStudent4(int id, const char fname[], const char lname[]) {
 	return *temp;
 }
 
+struct node { int data; };
+
+const node& makeNode(node& ref) {
+	std::cout << "call makeNode()\n";
+	ref.data++;
+	return ref;
+}
+
+using PtrFunc = int(*)(int, int);
+
+PtrFunc ptrFunc = [](int a, int b) { return a % b; };
+
 int main() {
 	Student elisheva;
 	elisheva = createStudent1(345, "Elisheva", "Maimon");
@@ -92,6 +104,18 @@ int main() {
 	Student& st5 = createStudent4(456, "Donald", "Trump");
 	delete &st5;
 	memcpy(&st2, &st1, sizeof(Student));
+
+	ptrFunc = [](int x, int y) -> int {
+		return (double)x / y + 0.5;
+	};
+
+	cout << ptrFunc(8, 3) << endl;
+	int result = (*(&cube))(8);
+
+	int x = 3;
+	[&x](int y) { x = y * y + x; }(4);
+	cout << "X=" << x << endl;
+
 	return 0;
 }
 
