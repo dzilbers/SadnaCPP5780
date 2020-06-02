@@ -1,4 +1,5 @@
 #include<iostream>
+#include<exception>
 
 using namespace std;
 
@@ -94,13 +95,35 @@ public:
 
 int Class2::sum = 0;
 
+class Exc1 : public exception {
+public:
+	Exc1() {}
+	virtual ~Exc1() {}
+};
+
+class Exc2 : public Exc1 {};
+class Exc3 : public Exc1 {};
+
+void foo() {
+	throw Exc2();
+}
+
 int main(void) {
-	Class1 obj1;
-	cout << obj1.increaseAndReturn();
-	Class2 obj2(obj1);
-	Class1 obj3(obj1);
-	Class1 obj5 = obj1; // identical to the previous row
-	Class1 obj4;
-	obj4 = obj1;
+	//Class1 obj1;
+	//cout << obj1.increaseAndReturn();
+	//Class2 obj2(obj1);
+	//Class1 obj3(obj1);
+	//Class1 obj5 = obj1; // identical to the previous row
+	//Class1 obj4;
+	//obj4 = obj1;
+	try {
+		foo();
+	}
+	catch (Exc2&) {
+		cout << "Special treatment\n";
+	}
+	catch (Exc1&) {
+		cout << "General treatment\n";
+	}
 	return 0;
 }
