@@ -1,5 +1,6 @@
 #include<iostream>
 #include<exception>
+#include<fstream>
 
 using namespace std;
 
@@ -102,11 +103,68 @@ public:
 };
 
 class Exc2 : public Exc1 {};
-class Exc3 : public Exc1 {};
+
+class Exc3 : public Exc1 {
+	const char* what() const override {
+		return "Very special exception";
+	}
+};
 
 void foo() {
-	throw Exc2();
+	throw Exc3();
 }
+
+class MyFile : public fstream {
+	int* numbers = nullptr;
+public:
+	MyFile() { numbers = new int[10]; }
+	MyFile(const char* name) : fstream(name) {}
+	virtual ~MyFile() {
+		close();
+		delete[] numbers;
+	}
+	friend fstream& operator <<(fstream&, int);
+	friend fstream& operator >>(fstream&, int&);
+};
+fstream& operator <<(fstream& f, int n) {
+	f << n;
+	return f;
+}
+fstream& operator >>(fstream& f, int& n) {
+	f >> n;
+	return f;
+}
+
+void foo1() {
+	MyFile f1("yossi.txt");
+	f1 << 2;
+}
+
+class Class9 {
+	float a; // 0
+	int b;   // 4
+	bool c;  // 8
+	bool d;  // 9
+	int e;   // 12
+	bool b2, b3; // 16
+}; // 20
+
+template <typename T>
+class ClassA {
+	T f1;
+	double f2;
+	static int counter;
+public:
+	void foo(ClassA& obj) {
+		this->f1 = obj.f1;
+		f2 = obj.f2;
+	}
+	static void incr() { ++counter; }
+	static int getCounter() { return counter; }
+};
+
+template <typename T>
+int ClassA<T>::counter = 0;
 
 int main(void) {
 	//Class1 obj1;
@@ -116,14 +174,20 @@ int main(void) {
 	//Class1 obj5 = obj1; // identical to the previous row
 	//Class1 obj4;
 	//obj4 = obj1;
-	try {
-		foo();
-	}
-	catch (Exc2&) {
-		cout << "Special treatment\n";
-	}
-	catch (Exc1&) {
-		cout << "General treatment\n";
-	}
+	//try {
+	//	foo();
+	//}
+	//catch (Exc2& e) {
+	//	cout << "Special treatment\n" << e.what();
+	//}
+	//catch (Exc1& e) {
+	//	cout << "General treatment\n" << e.what();
+	//}
+
+//	cout << sizeof Class9 << endl;
+
+	ClassA<int>::incr();
+	cout << ClassA<int>::getCounter() << " " << ClassA<double>::getCounter() << endl;
+
 	return 0;
 }
