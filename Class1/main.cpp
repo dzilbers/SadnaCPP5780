@@ -30,7 +30,8 @@ public:
 			clk.m = this->m;
 			clk.h = this->h;
 			clk.d = this->d;
-		} else {
+		}
+		else {
 			clk.s = 0;
 			clk.m = this->m + 1;
 			if (clk.m <= 60) {
@@ -155,6 +156,7 @@ class ClassA {
 	double f2;
 	static int counter;
 public:
+	T f3;
 	void foo(ClassA& obj) {
 		this->f1 = obj.f1;
 		f2 = obj.f2;
@@ -162,6 +164,28 @@ public:
 	static void incr() { ++counter; }
 	static int getCounter() { return counter; }
 };
+
+template <typename T> class ClassB : public ClassA<T> {
+	using ClassA<T>::f3;
+public:
+	void boo() {
+		cout << f3;
+	}
+};
+
+template <typename T> class ClassC : public ClassA<int> {
+	void boo() {
+		cout << f3;
+	}
+
+	friend istream& operator >> <>(istream& in, ClassC obj);
+};
+
+template <typename T>
+istream& operator >> (istream& in, ClassC<T> obj) {
+	obj.boo();
+	return in;
+}
 
 template <typename T>
 int ClassA<T>::counter = 0;
