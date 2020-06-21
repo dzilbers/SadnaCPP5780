@@ -213,5 +213,20 @@ int main(void) {
 	ClassA<int>::incr();
 	cout << ClassA<int>::getCounter() << " " << ClassA<double>::getCounter() << endl;
 
+	fstream in("asda", ios::in | ios::binary);
+	Clock clk;
+	in >> clk;
+
 	return 0;
 }
+
+//template <typename T>
+//using CalcFuncPtr = T(*)(T, T);
+//CalcFuncPtr<int> myCalc = [](int a, int b) -> int { return a + b; };
+
+template <typename T> struct CalcFuncPtr {
+	typedef T(*Type)(T, T);
+};
+CalcFuncPtr<int>::Type myCalc = [](int a, int b) -> int { return a + b; };
+
+
