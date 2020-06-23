@@ -217,6 +217,8 @@ int main(void) {
 	Clock clk;
 	in >> clk;
 
+	int num = 0b0000011010101;
+
 	return 0;
 }
 
