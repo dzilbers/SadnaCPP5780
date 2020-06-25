@@ -53,7 +53,7 @@ public:
 	void removeFirst();
 	void clear();
 
-	friend std::istream& operator>>(std::istream&, List&);
+	friend std::istream& operator>> <>(std::istream&, List&);
 	template <typename T> friend std::ostream& operator<<(std::ostream&, const List&);
 protected:
 	// data field
