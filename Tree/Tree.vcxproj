@@ -18,6 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="program.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="List.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="SearchTree.h" />
+    <ClInclude Include="Tree.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{E4D2B4E3-D06A-4AA4-8466-A6A3EA93558F}</ProjectGuid>
@@ -137,15 +147,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\Google Drive\JCT\C++ Workshop\5780\תרגילי בית\Tree\menu.cpp" />
-    <ClCompile Include="..\..\..\..\Google Drive\JCT\C++ Workshop\5780\תרגילי בית\Tree\program.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\Google Drive\JCT\C++ Workshop\5780\תרגילי בית\Tree\menu.h" />
-    <ClInclude Include="..\..\..\..\Google Drive\JCT\C++ Workshop\5780\תרגילי בית\Tree\SearchTree.h" />
-    <ClInclude Include="..\..\..\..\Google Drive\JCT\C++ Workshop\5780\תרגילי בית\Tree\Tree.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

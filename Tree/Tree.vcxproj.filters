@@ -15,21 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Google Drive\JCT\C++ Workshop\5780\תרגילי בית\Tree\menu.cpp">
+    <ClCompile Include="menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Google Drive\JCT\C++ Workshop\5780\תרגילי בית\Tree\program.cpp">
+    <ClCompile Include="program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Google Drive\JCT\C++ Workshop\5780\תרגילי בית\Tree\menu.h">
+    <ClInclude Include="menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Google Drive\JCT\C++ Workshop\5780\תרגילי בית\Tree\SearchTree.h">
+    <ClInclude Include="SearchTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Google Drive\JCT\C++ Workshop\5780\תרגילי בית\Tree\Tree.h">
+    <ClInclude Include="Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
